@@ -9,8 +9,17 @@
         <link rel="stylesheet" href="{{ "/css/app.css" | prepend: site.baseurl }}">
     </head>
     <body>
+    <header class="header">
+        <h1>{{site.title}}</h1>
+        <p>{{site.description}}</p>
+    </header>
 
     {{content}}
+
+    <footer class="footer">
+        <small>Woohoo!</small>
+        <p>You made it to the bottom of the color pit.</p>
+    </footer>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{{ "/js/app.js" | prepend: site.baseurl }}"></script>
