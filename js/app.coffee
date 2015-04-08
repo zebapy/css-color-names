@@ -3,6 +3,11 @@
 
 'use strict'
 
+swatches = []
+
+$appContainer = $ '#app'
+$swatchesContainer = $ '<div class="swatches"></div>'
+
 hexToRgb = (hex) ->
     hex = hex.replace('#', '')
     r = parseInt(hex.substring(0,2), 16)
@@ -10,7 +15,6 @@ hexToRgb = (hex) ->
     b = parseInt(hex.substring(4,6), 16)
 
     result = [r,g,b]
-
 
 rgbToHsl = (rgb) ->
 
@@ -48,13 +52,32 @@ rgbToHsl = (rgb) ->
         (l * 100 + 0.5 | 0) + '%'
     ]
 
+class Swatch 
+    constructor: (name, hex) ->
+        @name = name
+        @hex = hex
+        @rgb = hexToRgb @hex
+        @hsl = rgbToHsl @rgb
+
+    rgbFormat: ->
+        format = "rgb(#{@rgb.join(',')})"
+
+    hslFormat: ->
+        format = "hsl(#{@hsl.join(',')})"
+
+    makeSwatchDiv: ->
+        $swatch = $ "<div class='swatch' style='background-color: #{@hex};' data-id=#{@name}>
+            <ul class='swatch-values'>
+                <li class='swatch-value swatch-name'>#{@name}</li>
+                <li class='swatch-value swatch-hex'>#{@hex}</li>
+                <li class='swatch-value swatch-rgb'>#{@rgbFormat()}</li>
+                <li class='swatch-value swatch-hsl'>#{@hslFormat()}</li>
+            </ul>
+        </div>"
+
 $.getJSON '/data/css-color-names.json', (data) ->
 
     colors = data
-
-    $appContainer = $ '#app'
-
-    $swatchesContainer = $ '<div class="swatches"></div>'
 
     index = 0
 
@@ -62,21 +85,9 @@ $.getJSON '/data/css-color-names.json', (data) ->
 
         index++
 
-        hex = colorHex
-        rgb = hexToRgb hex
-        hsl = rgbToHsl rgb
+        swatch = new Swatch(colorName, colorHex)
 
-        rgbFormat = "rgb(#{rgb.join(',')})"
-        hslFormat = "hsl(#{hsl.join(',')})"
-
-        $swatch = $ "<div class='swatch' style='background-color: #{colorHex};opacity: 1;-webkit-animation-duration: #{index * 100}s' data-id=#{colorName}>
-                <ul class='swatch-values'>
-                    <li class='swatch-value swatch-name'>#{colorName}</li>
-                    <li class='swatch-value swatch-hex'>#{hex}</li>
-                    <li class='swatch-value swatch-rgb'>#{rgbFormat}</li>
-                    <li class='swatch-value swatch-hsl'>#{hslFormat}</li>
-                </ul>
-            </div>"
+        $swatch = swatch.makeSwatchDiv()
 
         $swatchesContainer.append $swatch
 
