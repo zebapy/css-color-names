@@ -1,0 +1,11 @@
+# Site settings
+title: "Swatch &FilledSmallSquare;"
+email: hi@zeb.codes
+description: CSS color names
+baseurl: ""
+url: "http://zebapy.github.io/swatch"
+twitter_username: zebhdiyah
+github_username: zebapy
+
+# Build settings
+markdown: kramdown
