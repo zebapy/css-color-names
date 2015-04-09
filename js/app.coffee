@@ -16,6 +16,8 @@ hexToRgb = (hex) ->
 
     result = [r,g,b]
 
+    return result
+
 rgbToHsl = (rgb) ->
 
     [r,g,b] = rgb
