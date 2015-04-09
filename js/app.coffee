@@ -77,21 +77,23 @@ class Swatch
             </ul>
         </div>"
 
+        if @hsl[2] < '45%'
+            $swatch.addClass 'invert'
+
+        return $swatch
+
 $.getJSON '/data/css-color-names.json', (data) ->
 
     colors = data
 
-    index = 0
-
-    $.each colors, (colorName, colorHex, i) ->
-
-        index++
-
+    $.each colors, (colorName, colorHex) ->
         swatch = new Swatch(colorName, colorHex)
+        swatches.push swatch
 
-        $swatch = swatch.makeSwatchDiv()
+    swatches.sort (a, b) ->
+        return a.hsl[0] - b.hsl[0]
 
-        $swatchesContainer.append $swatch
+    $swatchesContainer.append swatch.makeSwatchDiv() for swatch in swatches
 
     $appContainer.append $swatchesContainer
 
