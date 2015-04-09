@@ -21,6 +21,10 @@
     color: rgba(black, .5);
     // opacity: 0;
     -webkit-animation-name: fadeIn;
+
+    &.invert {
+        color: rgba(white, .5);
+    }
 }
 
 .swatch-values {
