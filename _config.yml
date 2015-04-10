@@ -2,8 +2,9 @@
 title: "CSSwatch"
 email: hi@zeb.codes
 description: CSS color names
-baseurl: "http://zeb.codes/swatch"
+baseurl: "http://zebapy.github.io/swatch"
 url: "http://zebapy.github.io/swatch"
+github_url: "https://github.com/zebapy/swatch"
 twitter_username: zebhdiyah
 github_username: zebapy
 author_url: "http://zeb.codes"
