@@ -82,7 +82,7 @@ class Swatch
 
         return $swatch
 
-$.getJSON '/data/css-color-names.json', (data) ->
+$.getJSON 'data/css-color-names.json', (data) ->
 
     colors = data
 
