@@ -91,6 +91,19 @@ $.getJSON 'data/css-color-names.json', (data) ->
         swatches.push swatch
 
     swatches.sort (a, b) ->
+
+        a = a.hsl
+        b = b.hsl
+        
+        if a[0] is not b[0]
+            return if a[0] < b[0] then 1 else -1
+
+        if a[1] is not b[1]
+            return if a[1] < b[1] then 1 else -1
+
+        return if a[2] < b[2] then 1 else -1
+
+    swatches.sort (a, b) ->
         return a.hsl[0] - b.hsl[0]
 
     $swatchesContainer.append swatch.makeSwatchDiv() for swatch in swatches
