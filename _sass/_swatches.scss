@@ -1,26 +1,16 @@
 .swatches {
     display: flex;
+    -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
 }
 
-@-webkit-keyframes fadeIn {
-    from: {
-        opacity: 0;
-    }
-
-    to: {
-        opacity: 1;
-    }
-}
-
 .swatch {
+    -webkit-flex-grow: 6;
     flex-grow: 6;
     min-height: 200px;
     min-width: 200px;
     padding: 10px;
     color: rgba(black, .5);
-    // opacity: 0;
-    -webkit-animation-name: fadeIn;
 
     &.invert {
         color: rgba(white, .5);
@@ -28,7 +18,7 @@
 }
 
 .swatch-values {
-    list-style: none;
+    list-style-type: none;
     margin: 0;
     padding: 0;
 }
