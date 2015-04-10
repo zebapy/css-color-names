@@ -1,7 +1,7 @@
 # Site settings
-title: "CSSwatch"
+title: "Swatch &middot; CSS Color Names"
 email: hi@zeb.codes
-description: CSS color names
+description: "CSS color names in hexidecimal, RGB, and HSL formats."
 baseurl: "http://zebapy.github.io/swatch"
 url: "http://zebapy.github.io/swatch"
 github_url: "https://github.com/zebapy/swatch"
