@@ -1,4 +1,16 @@
 .footer {
     padding: 20px;
     text-align: center;
+
+    a {
+        color: darkgray;
+        text-decoration: none;
+
+        border-bottom: 1px solid gainsboro;
+
+        &:hover {
+            color: deepskyblue;
+            border-color: deepskyblue;
+        }
+    }
 }
